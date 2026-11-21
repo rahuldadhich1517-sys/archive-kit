@@ -1,0 +1,93 @@
+{
+  "name": "@rahul_dadhich15/archive-kit",
+  "version": "0.1.0",
+  "description": "Production-ready, browser-first archive and compression toolkit (GZIP, ZIP creation, ZIP extraction) powered by fflate.",
+  "keywords": [
+    "zip",
+    "gzip",
+    "compression",
+    "decompression",
+    "archive",
+    "browser",
+    "fflate",
+    "tar",
+    "extract",
+    "unzip"
+  ],
+  "author": "Rahul Dadhich",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahuldadhich1517-sys/archive-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rahuldadhich1517-sys/archive-kit/issues"
+  },
+  "homepage": "https://github.com/rahuldadhich1517-sys/archive-kit#readme",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./gzip": {
+      "types": "./dist/gzip/index.d.ts",
+      "import": "./dist/gzip/index.js",
+      "require": "./dist/gzip/index.cjs"
+    },
+    "./zip-create": {
+      "types": "./dist/zip-create/index.d.ts",
+      "import": "./dist/zip-create/index.js",
+      "require": "./dist/zip-create/index.cjs"
+    },
+    "./zip-extract": {
+      "types": "./dist/zip-extract/index.d.ts",
+      "import": "./dist/zip-extract/index.js",
+      "require": "./dist/zip-extract/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:browser": "tsup src/index.ts --format iife --global-name ArchiveKit --platform browser -d tests/browser/dist && playwright test",
+    "test:smoke": "node scripts/smoke-test.mjs",
+    "test:consumer": "node scripts/consumer-test.mjs",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "fflate": "^0.8.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^22.10.1",
+    "@vitest/coverage-v8": "^3.0.0",
+    "eslint": "^9.39.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
